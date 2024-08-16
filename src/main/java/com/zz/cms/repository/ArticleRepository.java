@@ -32,12 +32,12 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
     @Modifying
     @Transactional
     @Query("update Article set artReadCount = artReadCount + 1 where id = ?1")
-    int addReadCount(Integer id);
+    void addReadCount(Integer id);
 
     @Modifying
     @Transactional
     @Query("update Article set artTitle=:artTitle,artType=:artType,artContent=:artContent,artDesc=:artDesc,deleteFlag=:deleteFlag")
-    int updateByIdNoReadCount(@Param("artTitle") String artTitle,
+    void updateByIdNoReadCount(@Param("artTitle") String artTitle,
                               @Param("artType") String artType,
                               @Param("artContent") String artContent,
                               @Param("artDesc") String artDesc,

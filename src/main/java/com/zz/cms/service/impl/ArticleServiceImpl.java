@@ -49,6 +49,7 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Integer incrementReadCount(Integer id) {
-        return articleRepository.callIncrementReadCount(id);
+        articleRepository.addReadCount(id);
+        return articleRepository.getReadCount(id);
     }
 }
